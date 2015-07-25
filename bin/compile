@@ -9,13 +9,12 @@ ARCHIVE_NAME = "branch-0_91"
 FULL_PATH = "https://codeload.github.com/FreeTDS/freetds/tar.gz/#{ARCHIVE_NAME}"
 
 puts "-----> Fetching & Extracting FreeTDS"
-puts `mkdir -p #{CACHE_DIR}/#{ARCHIVE_NAME}`
-puts "Pulling file: #{FULL_PATH}"
-puts `curl #{FULL_PATH} -o - | tar -xz -C #{CACHE_DIR}/#{ARCHIVE_NAME} -f -`
+puts `mkdir -p #{CACHE_DIR}`
+puts `curl #{FULL_PATH} -o - | tar -xz -C #{CACHE_DIR}/#{ARCHIVE_NAME} --strip-components=1 -f -`
 
 puts "-----> Configurating FreeTDS"
 puts `mkdir -p #{BUILD_DIR}/vendor/freetds`
-puts `cd #{CACHE_DIR}/#{ARCHIVE_NAME} && ./configure --prefix=#{BUILD_DIR}/vendor/freetds`
+puts `cd #{CACHE_DIR}/#{ARCHIVE_NAME} && ./autogen.sh --prefix=#{BUILD_DIR}/vendor/freetds`
 
 puts "-----> Building FreeTDS"
 puts `cd #{CACHE_DIR}/#{ARCHIVE_NAME} && make`
