@@ -5,7 +5,7 @@ $stdout.sync = true
 
 BUILD_DIR = ARGV[0]
 CACHE_DIR = ARGV[1]
-ARCHIVE_NAME = "branch-0_91.tar.gz"
+ARCHIVE_NAME = "branch-0_91"
 
 puts "-----> Fetching & Extracting FreeTDS"
 puts `mkdir -p #{CACHE_DIR}`
