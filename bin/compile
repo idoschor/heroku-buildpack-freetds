@@ -9,7 +9,7 @@ ARCHIVE_NAME = "branch-0_91"
 FULL_PATH = "https://codeload.github.com/FreeTDS/freetds/tar.gz/#{ARCHIVE_NAME}"
 
 puts "-----> Fetching & Extracting FreeTDS"
-puts `mkdir -p #{CACHE_DIR}`
+puts `mkdir -p #{CACHE_DIR}/#{ARCHIVE_NAME}`
 puts `curl #{FULL_PATH} -o - | tar -xz -C #{CACHE_DIR}/#{ARCHIVE_NAME} --strip-components=1 -f -`
 
 puts "-----> Configurating FreeTDS"
