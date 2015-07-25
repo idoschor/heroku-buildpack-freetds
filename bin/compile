@@ -11,5 +11,12 @@ puts `curl https://s3.amazonaws.com/firmhouse/freetds-0.tgz -o - | tar -xz -C #{
 
 puts "-----> Writing FreeTDS configuration for subsequent buildpack"
 File.open("export", "w") do |file|
+  {
+      'LD_LIBRARY_PATH' => "#{ARGV[0]}/vendor/freetds/lib:$LIBRARY_PATH",
+      'LIBRARY_PATH' => "#{ARGV[0]}/vendor/freetds/lib:$LIBRARY_PATH",
+      'CPPATH' => "#{ARGV[0]}/vendor/freetds/include:$CPPATH",
+      'CPATH' => "#{ARGV[0]}/vendor/freetds/include:$CPATH"
+  }.each { |k,v| file.write("export #{k}=#{v}") }
   file.write("export FREETDS_DIR=#{ARGV[0]}/vendor/freetds")
+
 end
