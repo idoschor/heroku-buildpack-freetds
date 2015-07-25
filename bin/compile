@@ -5,7 +5,7 @@ $stdout.sync = true
 
 BUILD_DIR = ARGV[0]
 CACHE_DIR = ARGV[1]
-ARCHIVE_NAME = "branch-0_91"
+ARCHIVE_NAME = "branch-0_95"
 FULL_PATH = "https://codeload.github.com/FreeTDS/freetds/tar.gz/#{ARCHIVE_NAME}"
 
 puts "-----> Fetching & Extracting FreeTDS"
